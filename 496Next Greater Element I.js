@@ -22,47 +22,29 @@
 // };
 
 // 暴力解法O(n*n)
-// var nextGreaterElement = function(findNums, nums) {
-//   let ans = [];
-//   let len = nums.length;
-
-//   findNums.forEach((item) => {
-//     let pos = nums.indexOf(item);
-//     let hasNextGreaterElement = false;
-
-//     for (let i = pos + 1; i < len; i++) {
-//       if (nums[i] > item) {
-//         ans.push(nums[i]);
-//         hasNextGreaterElement = true;
-//         break;
-//       }
-//     }
-
-//     if (!hasNextGreaterElement)
-//       ans.push(-1);
-//   });
-
-//   return ans;
-// };
-// 
-// 
-
-
-
-// 用stack
 var nextGreaterElement = function(findNums, nums) {
-  var stack = [];
-  var map = {};
-  for(var i = nums.length - 1; i >= 0; i -= 1) {
-    while(nums[i] > stack[stack.length - 1] && stack.length > 0) {
-      stack.pop();
+  let ans = [];
+  let len = nums.length;
+
+  findNums.forEach((item) => {
+    let pos = nums.indexOf(item);
+    let hasNextGreaterElement = false;
+
+    for (let i = pos + 1; i < len; i++) {
+      if (nums[i] > item) {
+        ans.push(nums[i]);
+        hasNextGreaterElement = true;
+        break;
+      }
     }
-    if (stack.length === 0) {
-      map[nums[i]] = -1;
-    } else {
-      map[nums[i]] = stack[stack.length - 1];
-    }
-    stack.push(nums[i]);
-  }
-  return findNums.map((i) => map[i]);
+
+    if (!hasNextGreaterElement)
+      ans.push(-1);
+  });
+
+  return ans;
 };
+
+
+
+
