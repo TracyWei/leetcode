@@ -1,3 +1,4 @@
+// 补数
 // var findComplement = function(num) {
 //   var mask = 1;
 //   var temp = num;
@@ -13,6 +14,7 @@ var findComplement = function(num) {
   var result = 0;
   var add = 1;
   while(num) {
+    // 最后一位是0的话
     if (!(num&1)) {
       result += add;
     }
